@@ -8,11 +8,6 @@
 "                                                                              "
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
-" Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
-
-
 " https://github.com/maxbane/vim-asm_ca65
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -69,7 +64,7 @@ set ruler
 set nocompatible
 set wildmenu
 set showmatch
-
+set mouse=a
 set complete+=kspell
 set completeopt=menuone,longest
 
@@ -101,7 +96,7 @@ endfunction
 "nmap <C-f> :NERDTreeToggle<CR>
 function! StartUp()
     if 0 == argc()
-"        NERDTree
+""        NERDTree
     end
 endfunction
 
