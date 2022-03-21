@@ -31,8 +31,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" This just pops up the AutoComp menu instead of ctrl-p
-Plug 'vim-scripts/AutoComplPop'
+" This just pops up the AutoComp menu instead of ctrl-p Plug 'vim-scripts/AutoComplPop'
 
 " Initialize plugin system
 call plug#end()
@@ -102,7 +101,7 @@ endfunction
 "nmap <C-f> :NERDTreeToggle<CR>
 function! StartUp()
     if 0 == argc()
-        NERDTree
+"        NERDTree
     end
 endfunction
 
@@ -116,6 +115,15 @@ filetype plugin indent on
 augroup filetypedetect
     au BufNewFile,BufRead *.s,*.inc set ft=asm_ca65
 augroup END
+
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
 
 "autocmd vimenter * NERDTree
 "let NERDTreeQuitOnOpen = 1
